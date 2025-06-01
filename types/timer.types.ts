@@ -14,6 +14,8 @@ export interface TimerModel {
   subscribe(callback: (state: TimerState) => void): () => void;
 }
 
+export type SessionType = 'work' | 'break';
+
 export interface TimerPresenter {
   startTimer(): void;
   pauseTimer(): void;
