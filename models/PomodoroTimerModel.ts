@@ -4,7 +4,7 @@ import { TimerModel, TimerState } from "../types/timer.types";
 export class PomodoroTimerModel implements TimerModel {
   private state: TimerState;
   private subscribers: ((state: TimerState) => void)[] = [];
-  private intervalId: NodeJS.Timeout | null = null;
+  private intervalId: number | null = null;
 
   constructor(duration: number = 25 * 60) {
     this.state = {
