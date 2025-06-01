@@ -39,13 +39,13 @@ export function TimerDisplay({ presenter }: TimerDisplayProps) {
     const cy = 50;
 
     const hasLabel = i % 5 === 0;
-    const tickLengthLabeled = 3;
-    const tickLengthUnlabeled = 1.5;
+    const tickLengthLabeled = 2;
+    const tickLengthUnlabeled = 1;
     const currentTickLength = hasLabel
       ? tickLengthLabeled
       : tickLengthUnlabeled;
 
-    const tickStartL = radius + 11 - 4;
+    const tickStartL = radius + 5;
     const x2 = cx + tickStartL * Math.cos(angleRad);
     const y2 = cy + tickStartL * Math.sin(angleRad);
 
@@ -53,7 +53,7 @@ export function TimerDisplay({ presenter }: TimerDisplayProps) {
     const x1 = cx + tickStartR * Math.cos(angleRad);
     const y1 = cy + tickStartR * Math.sin(angleRad);
 
-    const labelR = radius + 11 - 10;
+    const labelR = radius - 1;
     const lx = cx + labelR * Math.cos(angleRad);
     const ly = cy + labelR * Math.sin(angleRad);
 
@@ -63,16 +63,28 @@ export function TimerDisplay({ presenter }: TimerDisplayProps) {
 
   return (
     <View style={styles.timerContainer}>
-      <Svg height="100%" width="100%" viewBox="0 0 100 100">
-        <Circle cx="50" cy="50" r={37} strokeWidth="25" fill="#990000" />
+      <Svg
+        height="100%"
+        width="100
+      
+      %"
+        viewBox="0 0 100 100"
+      >
+        <Circle
+          cx="50"
+          cy="50"
+          r={radius + radius / 2 - 5}
+          strokeWidth="25"
+          fill="#990000"
+        />
 
         <Circle
           cx="50"
           cy="50"
-          r={radius}
+          r={radius - 1}
           fill="none"
           stroke="red"
-          strokeWidth="25"
+          strokeWidth={radius / 2 + 6}
           strokeDasharray={`${arcLength} ${gapLength}`}
           strokeDashoffset="0"
           transform="rotate(-90 50 50)"
@@ -82,28 +94,34 @@ export function TimerDisplay({ presenter }: TimerDisplayProps) {
         <Circle
           cx="50"
           cy="50"
-          r={37}
+          r={radius + radius / 2 - 6}
           strokeWidth="3"
           stroke="#ccc"
           fill="none"
+          opacity={0.15}
+        />
+        <Circle
+          cx="50"
+          cy="50"
+          r={radius - radius / 2 + 5}
+          strokeWidth="3"
+          fill="#ccc"
           opacity={0.1}
         />
         <Circle
           cx="50"
           cy="50"
-          r={21}
+          r={radius / 2 + 3}
           strokeWidth="25"
-          fill="#ccc"
-          opacity={0.1}
+          fill="#660000"
         />
-        <Circle cx="50" cy="50" r={20} strokeWidth="25" fill="#660000" />
 
         <SvgText
           x="50"
           y="51.5"
           textAnchor="middle"
           alignmentBaseline="middle"
-          fontSize="10"
+          fontSize="9"
           fill="white"
           fontWeight="bold"
         >
@@ -126,7 +144,7 @@ export function TimerDisplay({ presenter }: TimerDisplayProps) {
                 x={t.lx}
                 y={t.ly}
                 fill="#ffcccc"
-                fontSize="3"
+                fontSize="2.5"
                 fontWeight="bold"
                 textAnchor="middle"
                 alignmentBaseline="middle"
@@ -144,7 +162,7 @@ export function TimerDisplay({ presenter }: TimerDisplayProps) {
 
 const styles = StyleSheet.create({
   timerContainer: {
-    width: 300,
-    height: 300,
+    width: "100%",
+    height: "100%",
   },
 });
